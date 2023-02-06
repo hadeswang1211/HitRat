@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.textBoxCountDownTimer = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxScore = new System.Windows.Forms.TextBox();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.buttonStartGame = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,14 +44,14 @@
             this.textBoxCountDownTimer.TabIndex = 0;
             this.textBoxCountDownTimer.Text = "倒數計時:60秒";
             // 
-            // textBox2
+            // textBoxScore
             // 
-            this.textBox2.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(612, 21);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 31);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "得分:0";
+            this.textBoxScore.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBoxScore.Location = new System.Drawing.Point(612, 21);
+            this.textBoxScore.Name = "textBoxScore";
+            this.textBoxScore.Size = new System.Drawing.Size(176, 31);
+            this.textBoxScore.TabIndex = 2;
+            this.textBoxScore.Text = "得分:0";
             // 
             // gameTimer
             // 
@@ -66,7 +66,7 @@
             this.buttonStartGame.TabIndex = 3;
             this.buttonStartGame.Text = "開始遊戲";
             this.buttonStartGame.UseVisualStyleBackColor = true;
-            this.buttonStartGame.Click += new System.EventHandler(this.buttonStartGame_Click_1);
+            this.buttonStartGame.Click += new System.EventHandler(this.buttonStartGame_Click);
             // 
             // FormGameMain
             // 
@@ -76,7 +76,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonStartGame);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxScore);
             this.Controls.Add(this.textBoxCountDownTimer);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -91,7 +91,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxCountDownTimer;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxScore;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Button buttonStartGame;
     }

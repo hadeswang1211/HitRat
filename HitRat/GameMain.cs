@@ -19,6 +19,7 @@ namespace HitRat
         const int MAX_RAT = 3;
 
         int _gameTimer = 0;
+        int _gameScore = 0;
 
         List<Hole> _ratHoles = new List<Hole>();
 
@@ -68,6 +69,7 @@ namespace HitRat
 
         private void StartGame()
         {
+            _gameScore = 0;
             _gameTimer = GAME_ROUND_TIME;
             gameTimer.Interval = GAME_INTERVAL;
             gameTimer.Enabled = true;
@@ -80,6 +82,20 @@ namespace HitRat
 
             IfNeedToEndGame();
             ShowHideRat();
+            UpdateScore();
+        }
+
+        private void UpdateScore()
+        {
+            int hits = 0;
+
+            foreach (var hole in _ratHoles)
+            {
+                hits = hits + hole.GetHitTimesAndReset();
+            }
+
+            _gameScore = _gameScore + hits * 5;
+            textBoxScore.Text = $"得分:{_gameScore}";
         }
 
         private void ShowHideRat()
@@ -134,10 +150,11 @@ namespace HitRat
             {
                 gameTimer.Enabled = false;
                 textBoxCountDownTimer.Text = $"遊戲結束";
+                UpdateScore();
             }
         }
 
-        private void buttonStartGame_Click_1(object sender, EventArgs e)
+        private void buttonStartGame_Click(object sender, EventArgs e)
         {
             StartGame();
         }
@@ -147,8 +164,12 @@ namespace HitRat
     {
         private const int RAT_MIN_LIFE = 1;
         private const int RAT_MAX_LIFE = 5;
+
+        TextBox _scoreBoard;
         PictureBox _pictureBox;
         Rat _rat;
+
+        int _hitTimes;
 
         public Hole(int x, int y , Control parent)
         {
@@ -165,7 +186,14 @@ namespace HitRat
             pictureBox.BackgroundImage = HitRat.Properties.Resources.rat;
             pictureBox.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox.Parent = parent;
+            pictureBox.Click += Rat_Click;
             return pictureBox;
+        }
+
+        private void Rat_Click(object sender, EventArgs e)
+        {
+            _hitTimes = _hitTimes + 1;
+            RemoveRat();
         }
 
         public void Hide()
@@ -208,6 +236,13 @@ namespace HitRat
             {
                 RemoveRat();
             }
+        }
+
+        internal int GetHitTimesAndReset()
+        {
+            int hitTime = _hitTimes;
+            _hitTimes = 0;
+            return hitTime;
         }
     }
 
