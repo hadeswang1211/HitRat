@@ -78,6 +78,8 @@
             this.Controls.Add(this.buttonStartGame);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBoxCountDownTimer);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormGameMain";
             this.Text = "打地鼠";
             this.Load += new System.EventHandler(this.FormGameMain_Load);
