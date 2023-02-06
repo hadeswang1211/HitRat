@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HitRat
 {
-    public partial class Form1 : Form
+    public partial class FormGameMain : Form
     {
-        public Form1()
+        public FormGameMain()
         {
             InitializeComponent();
         }
